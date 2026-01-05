@@ -20,12 +20,17 @@ function Book(title, author, pages, isRead) {
   };
 }
 
-function AddBookToLibrary(title, author, pages, isRead) {
+function AddBookToLibrary(data) {
+  const title = data["title"];
+  const author = data["author"];
+  const pages = data["pages"];
+  const isRead = data["isRead"];
   const book = new Book(title, author, pages, isRead);
   library.push(book);
 }
 
 function renderBook(book) {
+  console.log(book);
   const bookElement = document.createElement("div");
   bookElement.className = "book";
   bookElement.id = book.id;
@@ -53,17 +58,16 @@ function newBookForm(){
     event.preventDefault();
     dialog.close();
     const formData = new FormData(event.target);
-    console.log(formData.values());
     const data = Object.fromEntries(formData);
+    AddBookToLibrary(data);
+    renderLibrary();
   });
 }
 
 function main() {
   // AddBookToLibrary("Homo", "Eyal", 295, true);
   // AddBookToLibrary("Bla", "Kim", 67, false);
-  renderLibrary();
-  
+  newBookForm();
 }
 
 main();
-newBookForm();
