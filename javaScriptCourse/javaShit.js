@@ -29,7 +29,8 @@ function AddBookToLibrary(data) {
   library.push(book);
 }
 
-function renderBook(book) {
+function renderBook() {
+  const book = library[library.length - 1];
   const bookElement = document.createElement("div");
   bookElement.className = "book";
   bookElement.id = book.id;
@@ -59,7 +60,7 @@ function newBookForm(){
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     AddBookToLibrary(data);
-    renderLibrary();
+    renderBook();
   });
 }
 
