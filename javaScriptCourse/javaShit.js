@@ -30,7 +30,6 @@ function AddBookToLibrary(data) {
 }
 
 function renderBook(book) {
-  console.log(book);
   const bookElement = document.createElement("div");
   bookElement.className = "book";
   bookElement.id = book.id;

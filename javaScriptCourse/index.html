@@ -17,9 +17,12 @@
                         <label for="author">The author of the book:</label>
                         <input type="text" id="author" name="author"><br><br>
                         <label for="pages">Pages number of the book:</label>
-                        <input type="text" id="pages" name="pages"><br><br>
-                        <label for="isRead">Have you read the book yet:</label>
-                        <input type="text" id="isRead" name="isRead"><br><br>
+                        <input type="text" id="pages" name="pages">
+                        <p>Have you read the book?</p>
+                        <input type="radio" id="true" name="isRead" value="true">
+                        <label for="true">true</label><br>
+                        <input type="radio" id="false" name="isRead" value="false">
+                        <label for="false">false</label><br>
                     </fieldset>
                     <button type="submit">add book!</button>
                 </form>
