@@ -24,7 +24,8 @@ function AddBookToLibrary(data) {
   const title = data["title"];
   const author = data["author"];
   const pages = data["pages"];
-  const isRead = data["isRead"];
+  const isRead = (data["isRead"] === 'true');
+  prompt(isRead);
   const book = new Book(title, author, pages, isRead);
   library.push(book);
 }
