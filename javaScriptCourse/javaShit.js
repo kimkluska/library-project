@@ -12,13 +12,20 @@ function Book(title, author, pages, isRead) {
   this.pages = pages;
   this.isRead = isRead;
 
-  this.getInfo = function () {
-    if (!this.isRead) {
-      return `${this.title} by ${this.author}<br> ${this.pages} pages<br> not read yet<br> id: ${this.id}`;
-    }
-    return `${this.title} by ${this.author}<br> ${this.pages} pages<br> was read<br> id: ${this.id}`;
-  };
+  // this.getInfo = function () {
+  //   if (!this.isRead) {
+  //     return `${this.title} by ${this.author}<br> ${this.pages} pages<br> not read yet<br> id: ${this.id}`;
+  //   }
+  //   return `${this.title} by ${this.author}<br> ${this.pages} pages<br> was read<br> id: ${this.id}`;
+  // };
 }
+Book.prototype.getInfo = function () {
+  return `${this.title} by ${this.author}<br>
+          ${this.pages} pages<br>
+          ${this.isRead ? "was read" : "not read yet"}<br>
+          id: ${this.id}`;
+};
+
 
 function AddBookToLibrary(data) {
   const title = data["title"];
