@@ -25,7 +25,6 @@ function AddBookToLibrary(data) {
   const author = data["author"];
   const pages = data["pages"];
   const isRead = (data["isRead"] === 'true');
-  prompt(isRead);
   const book = new Book(title, author, pages, isRead);
   library.push(book);
 }
@@ -62,6 +61,7 @@ function newBookForm(){
     const data = Object.fromEntries(formData);
     AddBookToLibrary(data);
     renderBook();
+    form.reset();
   });
 }
 
