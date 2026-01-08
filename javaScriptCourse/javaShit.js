@@ -11,14 +11,8 @@ function Book(title, author, pages, isRead) {
   this.author = author;
   this.pages = pages;
   this.isRead = isRead;
-
-  // this.getInfo = function () {
-  //   if (!this.isRead) {
-  //     return `${this.title} by ${this.author}<br> ${this.pages} pages<br> not read yet<br> id: ${this.id}`;
-  //   }
-  //   return `${this.title} by ${this.author}<br> ${this.pages} pages<br> was read<br> id: ${this.id}`;
-  // };
 }
+
 Book.prototype.getInfo = function () {
   return `${this.title} by ${this.author}<br>
           ${this.pages} pages<br>
@@ -26,18 +20,12 @@ Book.prototype.getInfo = function () {
           id: ${this.id}`;
 };
 
-
-function AddBookToLibrary(data) {
-  const title = data["title"];
-  const author = data["author"];
-  const pages = data["pages"];
-  const isRead = (data["isRead"] === 'true');
+function addBookToLibrary(title, author, pages, isRead) {
   const book = new Book(title, author, pages, isRead);
-  library.push(book);
+  library.push(book); 
 }
 
-function renderBook() {
-  const book = library[library.length - 1];
+function renderBook(book) {
   const bookElement = document.createElement("div");
   bookElement.className = "book";
   bookElement.id = book.id;
@@ -46,35 +34,40 @@ function renderBook() {
 }
   
 function renderLibrary() {
-  library.forEach(book => {
-    renderBook(book);
-  });
+  booksContainer.innerHTML = "";
+  library.forEach(book => renderBook(book));
 }
 
-function newBookForm(){
+function newBookForm() {
   const dialog = document.querySelector("dialog");
   const form = document.querySelector("form");
-  const closeButton = document.querySelector("dialog > button");
   const openButton = document.querySelector("dialog + button");
+
   openButton.addEventListener("click", () => {
     dialog.showModal();
   });
 
-  // "Close" button closes the dialog
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     dialog.close();
+
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    AddBookToLibrary(data);
-    renderBook();
+
+    addBookToLibrary(
+      data.title,
+      data.author,
+      data.pages,
+      data.isRead === 'true'
+
+    );
+    renderLibrary();;
+
     form.reset();
   });
 }
 
 function main() {
-  // AddBookToLibrary("Homo", "Eyal", 295, true);
-  // AddBookToLibrary("Bla", "Kim", 67, false);
   newBookForm();
 }
 
