@@ -16,8 +16,10 @@ function Book(title, author, pages, isRead) {
 Book.prototype.getInfo = function () {
   return `${this.title} by ${this.author}<br>
           ${this.pages} pages<br>
-          ${this.isRead ? "was read" : "not read yet"}<br>
-          id: ${this.id}<br>`;
+          ${this.isRead ? "was read" : "not read yet"}<br>`;
+};
+Book.prototype.changeStatus = function(){
+  this.isRead = !this.isRead;
 };
 
 function addBookToLibrary(title, author, pages, isRead) {
@@ -27,20 +29,33 @@ function addBookToLibrary(title, author, pages, isRead) {
 }
 
 booksContainer.addEventListener("click", (event) => {
+  const bookElement = event.target.closest(".book");
+  if (!bookElement) return;
+  const bookId = bookElement.dataset.id;
   if(event.target.classList.contains("deleteButton")){
-    const bookId = event.target.closest(".book").dataset.id;
     removeBookById(bookId);
   }
+  if(event.target.classList.contains("isReadButton")){
+    changeReadStatus(bookId);
+
+  }
+  renderLibrary();
 });
 
 function removeBookById(id) {
   const index = library.findIndex(book => book.id === id);
-  if (index !== -1){
+  if (index !== -1){ 
     library.splice(index, 1);
   } 
-  renderLibrary();
 }
 
+ function changeReadStatus(id){
+  const book = library.find(book => book.id === id);
+  if (book){
+    book.changeStatus(); 
+  }
+ }
+ 
 function renderBook(book) {
   const bookElement = document.createElement("div");
   bookElement.className = "book";
@@ -48,6 +63,7 @@ function renderBook(book) {
   bookElement.innerHTML = book.getInfo();
   booksContainer.appendChild(bookElement);
   createDeleteButton(bookElement);
+  createIsReadButton(bookElement);
 }
 
 function createDeleteButton(bookElement){
@@ -56,6 +72,14 @@ function createDeleteButton(bookElement){
   buttonElement.className = "deleteButton";
   // buttonElement.dataset.id = bookElement.dataset.id;
   bookElement.appendChild(buttonElement);
+}
+
+function createIsReadButton(bookElement){
+  const buttonElement = document.createElement('button');
+  buttonElement.textContent = "change read status";
+  buttonElement.className = "isReadButton";
+  bookElement.appendChild(buttonElement);
+
 }
 
 function renderLibrary() {
