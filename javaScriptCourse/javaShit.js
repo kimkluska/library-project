@@ -90,7 +90,7 @@ function renderLibrary() {
 function newBookForm() {
   const dialog = document.querySelector("dialog");
   const form = document.querySelector("form");
-  const openButton = document.querySelector("dialog + button");
+  const openButton = document.querySelector(".openButton.book");
 
   openButton.addEventListener("click", () => {
     dialog.showModal();

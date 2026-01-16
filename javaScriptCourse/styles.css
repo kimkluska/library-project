@@ -1,4 +1,4 @@
-
+* {box-sizing: border-box;}
 .topbar
 {
     padding: 20px 20px 0 20px;
@@ -24,28 +24,35 @@
     margin: 7px 20px 0px 0px;
     border-radius: 6.6px;
     display: block;
-    align-items: flex-start;
 }
 
 .body
 {
 
 }
+.libraryGrid
+{
+    display: grid;
+    grid-template-columns: repeat(5, 250px);
+    gap: 30px;
+    row-gap: 50px;
+    padding: 50px;
+    justify-content: center;
+    margin-right: 50px;
+}
 .dialogContainer
 {
-    padding: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.openButton
-{
     display: flex;
+    flex-direction: column;
+}
+.openButton.book
+{
+    
     text-align: center;
-    align-items: center;
-    width: 200px;
     font-size: 2.3rem;
-    height: 275px;
     border-radius: 12px;
     background-color: blueviolet;
     color: #ece8ed;
@@ -53,23 +60,18 @@
 }
 .booksContainer
 {
-    display: flex;
-    gap: 15px;
-    padding: 150px;
-    justify-self: center;
+    display: contents;
 }
 
 .book 
 {
     border-radius: 12px;
     padding: 50px;
-    width: 110px;
-    height: 185px;
+    width: 200px;
+    height: 280px;
     background-color: aqua;
-    flex-direction: column;
     align-items: center;
     text-align: center;
     display: flex;
+    flex-direction: column;
 }
-
-
