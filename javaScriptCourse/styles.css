@@ -1,4 +1,10 @@
-* {box-sizing: border-box;}
+* {
+    box-sizing: border-box;
+}
+body
+{
+    background-color: color-mix(in srgb, #ffffff 70%, #4704414f)
+}
 .topbar
 {
     padding: 20px 20px 0 20px;
@@ -26,10 +32,6 @@
     display: block;
 }
 
-.body
-{
-
-}
 .libraryGrid
 {
     display: grid;
@@ -42,11 +44,12 @@
 }
 .dialogContainer
 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
 }
 .openButton.book
 {
@@ -54,8 +57,11 @@
     text-align: center;
     font-size: 2.3rem;
     border-radius: 12px;
-    background-color: blueviolet;
+    background-color: #3d934e;
     color: #ece8ed;
+    line-height: normal;
+    padding: 50px;
+    padding-top: auto;
     
 }
 .booksContainer
@@ -66,12 +72,16 @@
 .book 
 {
     border-radius: 12px;
-    padding: 50px;
+    padding: 10px;
+    padding-top: 63px;
     width: 200px;
     height: 280px;
-    background-color: aqua;
+    background-color: #6bcd7a;
     align-items: center;
     text-align: center;
     display: flex;
     flex-direction: column;
+    font-size: 1.5rem;
+    line-height: 32px;
+    color: white;
 }
