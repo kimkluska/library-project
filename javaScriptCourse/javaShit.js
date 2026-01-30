@@ -68,7 +68,7 @@ function renderBook(book) {
 
 function createDeleteButton(bookElement){
   const buttonElement = document.createElement('button');
-  buttonElement.textContent = "delete";
+  buttonElement.textContent = "Delete";
   buttonElement.className = "deleteButton";
   // buttonElement.dataset.id = bookElement.dataset.id;
   bookElement.appendChild(buttonElement);
@@ -76,7 +76,7 @@ function createDeleteButton(bookElement){
 
 function createIsReadButton(bookElement){
   const buttonElement = document.createElement('button');
-  buttonElement.textContent = "change read status";
+  buttonElement.textContent = "Change read status";
   buttonElement.className = "isReadButton";
   bookElement.appendChild(buttonElement);
 

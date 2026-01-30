@@ -55,14 +55,24 @@ body
 {
     
     text-align: center;
-    font-size: 2.3rem;
     border-radius: 12px;
     background-color: #3d934e;
     color: #ece8ed;
-    line-height: normal;
-    padding: 50px;
-    padding-top: auto;
     
+}
+.openButton.book span
+{
+    font-size: 5rem;
+    line-height: 70px;
+    padding: 50px;
+}
+.openButton.book span::after
+{
+    content: "Add Book";
+    font-size: 1.2rem;
+    display: block;
+    line-height: 22px;
+    white-space: nowrap;
 }
 .booksContainer
 {
@@ -71,17 +81,59 @@ body
 
 .book 
 {
-    border-radius: 12px;
     padding: 10px;
-    padding-top: 63px;
+    padding-top: 27px;
     width: 200px;
     height: 280px;
-    background-color: #6bcd7a;
+    background-color: #aaf0b5;
     align-items: center;
     text-align: center;
     display: flex;
     flex-direction: column;
+    position: relative;
     font-size: 1.5rem;
     line-height: 32px;
     color: white;
+    border: 2.5px solid rgba(0, 0, 0, 0.274);
+    border-radius: 12px;
+}
+.deleteButton
+{
+    border-radius: 7px;
+    border-color: firebrick;
+    border-width: 1.85px;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: firebrick;
+    position: absolute;
+    top: 64%;
+    transition: 0.5s;
+}
+.deleteButton:hover
+{
+    color: #ffffff;
+    background-color: firebrick;
+}
+.isReadButton
+{
+    border-color: #00b100; 
+    color: #00b100;
+    position: absolute;
+    top: 82%;
+    border-radius: 7px;
+    border-width: 1.85px;
+    padding: 7px;
+    padding-left: 10px;
+    font-size: 1rem;
+    transition: 0.5s;
+
+}
+.isReadButton:hover
+{
+    color: #ffffff;
+    background-color: #00b100;
 }
