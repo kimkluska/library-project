@@ -85,7 +85,6 @@ body
     padding-top: 27px;
     width: 200px;
     height: 280px;
-    background-color: #aaf0b5;
     align-items: center;
     text-align: center;
     display: flex;
@@ -93,7 +92,7 @@ body
     position: relative;
     font-size: 1.5rem;
     line-height: 32px;
-    color: white;
+    color: rgb(129, 127, 127);
     border: 2.5px solid rgba(0, 0, 0, 0.274);
     border-radius: 12px;
 }

@@ -1,7 +1,7 @@
 const library = [];
 const booksContainer = document.getElementById('booksContainer');
 
-function Book(title, author, pages, isRead) {
+function Book(title, author, pages, isRead, color) {
   if (!new.target) {
     throw Error("You must use the 'new' keyword to call the constructor");
   }
@@ -11,6 +11,7 @@ function Book(title, author, pages, isRead) {
   this.author = author;
   this.pages = pages;
   this.isRead = isRead;
+  this.color = color
 }
 
 Book.prototype.getInfo = function () {
@@ -22,8 +23,8 @@ Book.prototype.changeStatus = function(){
   this.isRead = !this.isRead;
 };
 
-function addBookToLibrary(title, author, pages, isRead) {
-  const book = new Book(title, author, pages, isRead);
+function addBookToLibrary(title, author, pages, isRead, color) {
+  const book = new Book(title, author, pages, isRead, color);
   library.push(book); 
   renderLibrary();
 }
@@ -55,12 +56,26 @@ function removeBookById(id) {
     book.changeStatus(); 
   }
  }
- 
+
+function generateColors()
+{
+    let R = Math.floor((Math.random() * (54)) + 200);
+    let G = Math.floor((Math.random() * 54) + 200);
+    let B = Math.floor((Math.random() * 54) + 200);
+    // let rgb = (R << 16) + (G << 8) + B;
+    let rHex = R.toString(16);
+    let gHex = G.toString(16);
+    let bHex = B.toString(16);
+    return `#${rHex}${gHex}${bHex}`;
+    // return `#${rgb.toString(16)}`;
+}
+
 function renderBook(book) {
   const bookElement = document.createElement("div");
   bookElement.className = "book";
   bookElement.dataset.id = book.id;
   bookElement.innerHTML = book.getInfo();
+  bookElement.style.backgroundColor = book.color;
   booksContainer.appendChild(bookElement);
   createDeleteButton(bookElement);
   createIsReadButton(bookElement);
@@ -106,7 +121,8 @@ function newBookForm() {
       data.title,
       data.author,
       data.pages,
-      data.isRead === 'true'
+      data.isRead === 'true',
+      generateColors()
 
     );
 
