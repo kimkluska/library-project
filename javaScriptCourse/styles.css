@@ -51,14 +51,20 @@ body
     padding: 0;
     overflow: visible;
 }
+
 .openButton.book
 {
     
     text-align: center;
     border-radius: 12px;
-    background-color: #3d934e;
+    background-color: #35b2357d;
     color: #ece8ed;
+    transition: 0.25s;
     
+}
+.openButton.book:hover
+{
+    background-color: #23f4237d;
 }
 .openButton.book span
 {
@@ -71,9 +77,18 @@ body
     content: "Add Book";
     font-size: 1.2rem;
     display: block;
-    line-height: 22px;
+    line-height: 25px;
     white-space: nowrap;
 }
+.openButton.book span:hover
+{
+    font-size: 400%;
+}
+.openButton.book span:hover:after
+{
+    font-size: 20%;
+}
+
 .booksContainer
 {
     display: contents;
@@ -95,6 +110,11 @@ body
     color: rgb(129, 127, 127);
     border: 2.5px solid rgba(0, 0, 0, 0.274);
     border-radius: 12px;
+    transition: all 0.35s ease;
+}
+.book:hover
+{
+    transform: scale(1.1);
 }
 .deleteButton
 {
@@ -135,4 +155,64 @@ body
 {
     color: #ffffff;
     background-color: #00b100;
+}
+
+dialog#formDialog
+{
+    background-color: rgb(203, 130, 229);
+    width: 600px;
+    height: 540px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+
+}
+dialog#formDialog::backdrop
+{
+    backdrop-filter: blur(5px);
+}
+
+fieldset
+{
+    padding-top: 0;
+    width: 550px;
+    height: 450px;
+    /* color: white; */
+  
+}
+h1
+{
+    color: white;
+}
+form
+{
+    position: relative;
+    margin-top: 0% auto;
+    font-size: 1.4rem;
+}
+form button
+{
+    margin-top: 9.5px;
+    padding: 5px 6px 7px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 7px;
+    background-color: #e8bff6;
+    color: #f1f1f1;
+    transition: 0.15s ease;
+}
+form button:hover
+{
+    padding: 7px 8px 9px;
+    background-color: #e9b0fc;
+
+}
+p#radioLabel
+{
+    margin-bottom: 0.7%;
+}
+.Yes_No
+{
+    margin-top: 0% auto;
 }
