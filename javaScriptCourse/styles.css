@@ -161,7 +161,9 @@ dialog#formDialog
 {
     background-color: rgb(203, 130, 229);
     width: 600px;
-    height: 540px;
+    height: auto;
+    max-height: 670px;
+    /* height: 550px; */
     /* display: flex;
     flex-direction: column;
     justify-content: center;
@@ -177,7 +179,8 @@ fieldset
 {
     padding-top: 0;
     width: 550px;
-    height: 450px;
+    height: auto;
+    /* height: 480px; */
     /* color: white; */
   
 }
@@ -201,6 +204,7 @@ form button
     background-color: #e8bff6;
     color: #f1f1f1;
     transition: 0.15s ease;
+    width: fit-content;
 }
 form button:hover
 {
@@ -215,4 +219,24 @@ p#radioLabel
 .Yes_No
 {
     margin-top: 0% auto;
+}
+input
+{
+    border-radius: 7px;
+}
+input:invalid
+{
+    border: 2px solid red;
+}
+.errorMsg
+{
+    line-height: 0;
+    margin: 2px 0 15px 0;
+    padding: 0 8px;
+    font-size: 1.1rem;
+    padding: 8px;
+}
+label
+{ 
+    margin-bottom: 0;
 }

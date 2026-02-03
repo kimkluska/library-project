@@ -14,20 +14,24 @@
     <div id="dialogContainer" class="dialogContainer">
         <dialog id="formDialog">
             <div id="formWrapper">
-                <form>
+                <form novalidate>
                     <fieldset>
                         <h1>Add your book!</h1>
                         <label for="title">The title of the book:</label><br>
                         <input type="text" id="title" name="title" required><br><br>
+                        <p class="errorMsg" id="titleMsg"></p>
                         <label for="author">The author of the book:</label><br>
                         <input type="text" id="author" name="author" required><br><br>
+                        <p class="errorMsg" id="authorMsg"></p>
                         <label for="pages">Pages number of the book:</label><br>
-                        <input type="number" id="pages" name="pages" required>
+                        <input type="number" id="pages" name="pages" min="1" required>
+                        <p class="errorMsg" id="pagesMsg"></p>
                         <p id="radioLabel">Have you read the book?</p>
                         <input type="radio" id="true" name="isRead" value="true"class="Yes_No" required>
                         <label for="true">Yes</label><br>
                         <input type="radio" id="false" name="isRead" value="false" class="Yes_No" required>
-                        <label for="false">No</label><br>                                                                                                                                                                                                                                                                                                                    
+                        <label for="false">No</label><br>    
+                        <p class="errorMsg" id="isReadMsg"></p>                                                                                                                                                                                                                                                                                                                
                     </fieldset>
                     <button type="submit">Add book</button>
                 </form>

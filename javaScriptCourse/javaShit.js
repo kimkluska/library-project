@@ -102,6 +102,27 @@ function renderLibrary() {
   library.forEach(book => renderBook(book));
 }
 
+function formValidation() {
+  const form = document.querySelector("form");
+  const inputs = form.querySelectorAll("input");
+  let isValid = true;
+  inputs.forEach(input => {
+    console.log(input.checkValidity());
+    const errorMsg = document.getElementById(`${input.name}Msg`);
+    if(errorMsg) {
+      errorMsg.textContent = "";
+    }
+    if(!input.checkValidity()) {
+      if(errorMsg) {
+        errorMsg.textContent = input.validationMessage;
+      }
+      console.log(input.validationMessage);   
+      isValid = false;
+    }
+  });
+  return isValid;
+}
+
 function newBookForm() {
   const dialog = document.querySelector("dialog");
   const form = document.querySelector("form");
@@ -113,7 +134,9 @@ function newBookForm() {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-
+    if (!formValidation()) {
+      return;
+    }
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
