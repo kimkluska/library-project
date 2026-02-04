@@ -10,7 +10,38 @@ class Book {
     this.isRead = isRead;
     this.color = color
   }
-  
+
+  get title() {
+    return this._title;
+  }
+  set title(value) {
+    this._title = value;
+  }
+  get author() {
+    return this._author;
+  }
+  set author(value) {
+    this._author = value;
+  }
+  get pages() {
+    return this._pages;
+  } 
+  set pages(value) {
+    this._pages = value;
+  }
+  get isRead() {
+    return this._isRead;
+  }
+  set isRead(value) {
+    this._isRead = value;
+  }
+  get color() {
+    return this._color;
+  } 
+  set color(value) {
+    this._color = value;
+  }
+
   getInfo() {
     return `${this.title} by ${this.author}<br>
             ${this.pages} pages<br>
