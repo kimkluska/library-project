@@ -1,6 +1,3 @@
-const library = [];
-const booksContainer = document.getElementById('booksContainer');
-
 class Book {
   constructor(title, author, pages, isRead, color) {
     this.id = crypto.randomUUID();
@@ -52,39 +49,45 @@ class Book {
   }
 }
 
-function addBookToLibrary(title, author, pages, isRead, color) {
-  const book = new Book(title, author, pages, isRead, color);
-  library.push(book); 
-  renderLibrary();
+class Library {
+  constructor() {
+    this.books = [];
+  }
+  addBook(title, author, pages, isRead, color){
+    const book = new Book(title, author, pages, isRead, color);
+    this.books.push(book);
+  }
+  removeBook(id){
+    const index = this.books.findIndex(book => book.id === id);
+    if (index !== -1){ 
+      this.books.splice(index, 1);
+    }
+  }
+  changeReadStatus(id){
+    const book = this.books.find(book => book.id === id);
+    if (book) {
+      book.changeStatus();
+    }
+  }
 }
+
+const booksContainer = document.getElementById('booksContainer');
+const library = new Library();
 
 booksContainer.addEventListener("click", (event) => {
   const bookElement = event.target.closest(".book");
   if (!bookElement) return;
   const bookId = bookElement.dataset.id;
   if(event.target.classList.contains("deleteButton")){
-    removeBookById(bookId);
+    library.removeBook(bookId);
   }
   if(event.target.classList.contains("isReadButton")){
-    changeReadStatus(bookId);
+    library.changeReadStatus(bookId);
 
   }
   renderLibrary();
 });
 
-function removeBookById(id) {
-  const index = library.findIndex(book => book.id === id);
-  if (index !== -1){ 
-    library.splice(index, 1);
-  } 
-}
-
- function changeReadStatus(id){
-  const book = library.find(book => book.id === id);
-  if (book){
-    book.changeStatus(); 
-  }
- }
 
 function generateColors()
 {
@@ -128,7 +131,7 @@ function createIsReadButton(bookElement){
 
 function renderLibrary() {
   booksContainer.innerHTML = "";
-  library.forEach(book => renderBook(book));
+  library.books.forEach(book => renderBook(book));
 }
 
 function formValidation() {
@@ -169,7 +172,7 @@ function newBookForm() {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    addBookToLibrary(
+    library.addBook(
       data.title,
       data.author,
       data.pages,
@@ -177,14 +180,11 @@ function newBookForm() {
       generateColors()
 
     );
+    renderLibrary();
 
     form.reset();
     dialog.close();
   });
 }
 
-function main() {
-  newBookForm();
-}
-
-main();
+newBookForm();
