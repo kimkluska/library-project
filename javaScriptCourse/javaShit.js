@@ -1,27 +1,25 @@
 const library = [];
 const booksContainer = document.getElementById('booksContainer');
 
-function Book(title, author, pages, isRead, color) {
-  if (!new.target) {
-    throw Error("You must use the 'new' keyword to call the constructor");
+class Book {
+  constructor(title, author, pages, isRead, color) {
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+    this.color = color
   }
-
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
-  this.color = color
+  
+  getInfo() {
+    return `${this.title} by ${this.author}<br>
+            ${this.pages} pages<br>
+            ${this.isRead ? "was read" : "not read yet"}<br>`;
+  }
+  changeStatus(){
+    this.isRead = !this.isRead;
+  }
 }
-
-Book.prototype.getInfo = function () {
-  return `${this.title} by ${this.author}<br>
-          ${this.pages} pages<br>
-          ${this.isRead ? "was read" : "not read yet"}<br>`;
-};
-Book.prototype.changeStatus = function(){
-  this.isRead = !this.isRead;
-};
 
 function addBookToLibrary(title, author, pages, isRead, color) {
   const book = new Book(title, author, pages, isRead, color);
