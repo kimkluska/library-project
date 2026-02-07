@@ -57,11 +57,8 @@ class Library {
     const book = new Book(title, author, pages, isRead, color);
     this.books.push(book);
   }
-  removeBook(id){
-    const index = this.books.findIndex(book => book.id === id);
-    if (index !== -1){ 
-      this.books.splice(index, 1);
-    }
+  removeBook(id) {
+  this.books = this.books.filter(book => book.id !== id);
   }
   changeReadStatus(id){
     const book = this.books.find(book => book.id === id);
@@ -117,7 +114,6 @@ function createDeleteButton(bookElement){
   const buttonElement = document.createElement('button');
   buttonElement.textContent = "Delete";
   buttonElement.className = "deleteButton";
-  // buttonElement.dataset.id = bookElement.dataset.id;
   bookElement.appendChild(buttonElement);
 }
 
@@ -139,7 +135,6 @@ function formValidation() {
   const inputs = form.querySelectorAll("input");
   let isValid = true;
   inputs.forEach(input => {
-    console.log(input.checkValidity());
     const errorMsg = document.getElementById(`${input.name}Msg`);
     if(errorMsg) {
       errorMsg.textContent = "";
@@ -148,7 +143,6 @@ function formValidation() {
       if(errorMsg) {
         errorMsg.textContent = input.validationMessage;
       }
-      console.log(input.validationMessage);   
       isValid = false;
     }
   });
